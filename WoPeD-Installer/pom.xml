@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>com.akathist.maven.plugins.launch4j</groupId>
 			<artifactId>launch4j-maven-plugin</artifactId>
-			<version>1.7.25</version>
+			<version>2.5.1</version>
 		</dependency>
 	</dependencies>
 
@@ -60,23 +60,23 @@
 							<configuration>
 								<tasks>
 									<filter token="wopedversion" value="${project.version}"/>
-									<mkdir dir="target/staging" />
-									<mkdir dir="target/stagingOutput" />
-									<mkdir dir="target/staging/doc" />
-									<mkdir dir="target/staging/doc/html" />
-									<mkdir dir="target/staging/doc/html/de" />
-									<mkdir dir="target/staging/doc/html/en" />
-									<mkdir dir="target/staging/doc/html/images" />
-									<mkdir dir="target/staging/doc/pdf" />
-									<mkdir dir="target/staging/doc/pdf/de" />
-									<mkdir dir="target/staging/doc/pdf/en" />
-									<mkdir dir="target/Windows" />
-									<mkdir dir="target/Linux" />
+									<mkdir dir="target/staging"/>
+									<mkdir dir="target/stagingOutput"/>
+									<mkdir dir="target/staging/doc"/>
+									<mkdir dir="target/staging/doc/html"/>
+									<mkdir dir="target/staging/doc/html/de"/>
+									<mkdir dir="target/staging/doc/html/en"/>
+									<mkdir dir="target/staging/doc/html/images"/>
+									<mkdir dir="target/staging/doc/pdf"/>
+									<mkdir dir="target/staging/doc/pdf/de"/>
+									<mkdir dir="target/staging/doc/pdf/en"/>
+									<mkdir dir="target/Windows"/>
+									<mkdir dir="target/Linux"/>
 									<copy todir="target/staging">
-										<fileset dir="${basedir}/installFiles" />
+										<fileset dir="${basedir}/installFiles"/>
 									</copy>
 									<copy todir="target/staging" filtering="true">
-										<fileset file="${basedir}/installFiles/*.txt" />
+										<fileset file="${basedir}/installFiles/*.txt"/>
 									</copy>
 									<copy todir="target/staging/doc/pdf/de" filtering="false">
 										<fileset file="${basedir}/../WoPeD-Starter/doc/pdf/de/*.pdf"/>
@@ -88,16 +88,16 @@
 										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/images"/>
 									</copy>
 									<copy todir="target/staging/doc/html" filtering="false">
-										<fileset file="${basedir}/../WoPeD-Starter/doc/html/*.*" />
+										<fileset file="${basedir}/../WoPeD-Starter/doc/html/*.*"/>
 									</copy>
 									<copy todir="target/staging/doc/html/de" filtering="true">
-										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/de" />
+										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/de"/>
 									</copy>
 									<copy todir="target/staging/doc//html/en" filtering="true">
-										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/en" />
+										<fileset dir="${basedir}/../WoPeD-Starter/doc/html/en"/>
 									</copy>
 									<copy tofile="target/staging/WoPeD-Starter.jar">
-										<fileset file="${basedir}/../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar" />
+										<fileset file="${basedir}/../WoPeD-Starter/target/WoPeD-Starter-${project.version}-jar-with-dependencies.jar"/>
 									</copy>
 								</tasks>
 							</configuration>
@@ -212,8 +212,7 @@
 							<configuration>
 								<tasks>
 									<copy tofile="target/Linux/WoPeD-install-linux-${project.version}.jar">
-										<fileset
-												file="./target/stagingOutput/WoPeD-Installer-${project.version}.jar" />
+										<fileset file="./target/stagingOutput/WoPeD-Installer-${project.version}.jar"/>
 									</copy>
 								</tasks>
 							</configuration>
@@ -235,9 +234,9 @@
 								<tasks>
 									<taskdef name="bundleapp" classname="com.oracle.appbundler.AppBundlerTask" classpath="mac/lib/appbundler-1.0ea.jar"/>
 									<filter token="wopedversion" value="${project.version}"/>
-									<delete dir="dist" />
-									<mkdir dir="dist" />
-									<mkdir dir="dist/nets" />
+									<delete dir="dist"/>
+									<mkdir dir="dist"/>
+									<mkdir dir="dist/nets"/>
 
 									<copy todir="dist" filtering="true">
 										<fileset file="../WoPeD-Starter/*.txt"/>
@@ -259,15 +258,7 @@
 										<fileset file="mac/nets/*.*"/>
 									</copy>
 
-									<bundleapp outputdirectory="dist"
-											   name="WoPeD"
-											   displayname="WoPeD"
-											   identifier="org.woped"
-											   shortversion="${project.version}"
-											   icon="dist/WoPeD.icns"
-											   applicationCategory="public.app-category.developer-tools"
-											   mainclassname="org.woped.starter.RunWoPeD"
-											   copyright="WoPeD copyright 2021">
+									<bundleapp outputdirectory="dist" name="WoPeD" displayname="WoPeD" identifier="org.woped" shortversion="${project.version}" icon="dist/WoPeD.icns" applicationCategory="public.app-category.developer-tools" mainclassname="org.woped.starter.RunWoPeD" copyright="WoPeD copyright 2021">
 										<option value="-Dapple.laf.useScreenMenuBar=true -Dname=WoPeD"/>
 									</bundleapp>
 
